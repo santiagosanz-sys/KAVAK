@@ -78,7 +78,7 @@ export const Offers: React.FC = () => {
   };
 
   const getColorClasses = (color: string) => {
-    return 'border-kavak-blue bg-kavak-blue/5 hover:bg-white hover:border-kavak-blue transition-all duration-300';
+    return 'border-kavak-blue bg-kavak-blue hover:bg-white hover:border-kavak-blue hover:scale-105 transition-all duration-300';
   };
 
   const getButtonColor = (color: string) => {
@@ -109,41 +109,41 @@ export const Offers: React.FC = () => {
                 key={offer.id} 
                 className={`relative ${getColorClasses(offer.color)} border-2 hover:shadow-xl cursor-pointer`}
               >
-                <div className="p-6">
+                <div className="p-4">
                   {/* Header */}
-                  <div className="text-center mb-6">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  <div className="text-center mb-4">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
                       {offer.name}
                     </h3>
-                    <p className="text-gray-600 text-sm mb-4">
+                    <p className="text-gray-600 text-xs mb-3">
                       {offer.description}
                     </p>
                     
                     {/* Precio */}
-                    <div className="mb-4">
-                      <span className="text-4xl font-bold text-gray-900">
+                    <div className="mb-3">
+                      <span className="text-3xl font-bold text-gray-900">
                         ${offer.price.toLocaleString()}
                       </span>
-                      <span className="text-gray-600 ml-2">/{offer.period}</span>
+                      <span className="text-gray-600 ml-2 text-sm">/{offer.period}</span>
                     </div>
                     
                     {/* Número de póliza */}
-                    <div className="bg-white/50 rounded-lg p-3 mb-4">
-                      <p className="text-sm text-gray-600">N° de Póliza</p>
-                      <p className="font-mono text-sm font-semibold text-gray-800">
+                    <div className="bg-gray-100 rounded-lg p-2 mb-3">
+                      <p className="text-xs text-gray-600">N° de Póliza</p>
+                      <p className="font-mono text-xs font-semibold text-gray-800">
                         {offer.policyNumber}
                       </p>
                     </div>
                   </div>
 
                   {/* Características */}
-                  <div className="mb-6">
-                    <h4 className="font-semibold text-gray-900 mb-3">Coberturas incluidas:</h4>
-                    <ul className="space-y-2">
+                  <div className="mb-4">
+                    <h4 className="font-semibold text-gray-900 mb-2 text-sm">Coberturas incluidas:</h4>
+                    <ul className="space-y-1">
                       {offer.features.map((feature, index) => (
                         <li key={index} className="flex items-start">
-                          <span className="text-green-500 mr-2 mt-1">✓</span>
-                          <span className="text-sm text-gray-700">{feature}</span>
+                          <span className="text-green-500 mr-2 mt-0.5 text-xs">✓</span>
+                          <span className="text-xs text-gray-700">{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -152,7 +152,7 @@ export const Offers: React.FC = () => {
                   {/* Botón */}
                   <Button
                     onClick={() => handleSelectOffer(offer)}
-                    className={`w-full ${getButtonColor(offer.color)} text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200`}
+                    className={`w-full ${getButtonColor(offer.color)} text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 text-sm`}
                   >
                     Seleccionar {offer.name.replace('KAVAK ', '')}
                   </Button>
