@@ -18,16 +18,15 @@ export interface VehicleData {
 }
 
 export interface DriverData {
-  fullName: string;
-  age: number;
   gender: string;
   cuil: string;
+  birthDate: string;
+  phone: string;
+}
+
+export interface AddressData {
   address: string;
   postalCode: string;
-  birthDate: string;
-  email: string;
-  phone: string;
-  licenseNumber: string;
 }
 
 export interface VehicleTechnicalData {
@@ -59,7 +58,7 @@ export interface QuoteRequest {
   country: Country;
   vehicle: VehicleData;
   driver: DriverData;
-  vehicleTechnical: VehicleTechnicalData;
+  address: AddressData;
   coverage: Coverage;
 }
 

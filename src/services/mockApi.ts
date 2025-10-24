@@ -22,10 +22,12 @@ const calculateBasePrice = (request: QuoteRequest): number => {
     basePrice *= 1.4;
   }
   
-  // Driver age factor
-  if (driver.age < 25) {
+  // Driver age factor (calculate from birth date)
+  const birthDate = new Date(driver.birthDate);
+  const age = currentYear - birthDate.getFullYear();
+  if (age < 25) {
     basePrice *= 1.5;
-  } else if (driver.age > 65) {
+  } else if (age > 65) {
     basePrice *= 1.3;
   }
   

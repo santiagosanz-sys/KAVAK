@@ -6,11 +6,12 @@ import { StepIndicator } from '../../components/ui/StepIndicator';
 import { useQuoteStore } from '../../store/quoteStore';
 import { useAuthStore } from '../../store/authStore';
 import { VehicleStep } from './Steps/VehicleStep';
-import { DriverStep } from './Steps/DriverStep';
-import { VehicleTechnicalStep } from './Steps/VehicleTechnicalStep';
+import { PersonalDataStep } from './Steps/PersonalDataStep';
+import { AddressStep } from './Steps/AddressStep';
 import { CoverageStep } from './Steps/CoverageStep';
+import { LoginStep } from './Steps/LoginStep';
 
-const steps = ['Vehículo', 'Conductor', 'Datos Técnicos', 'Cobertura'];
+const steps = ['Vehículo', 'Datos Personales', 'Dirección', 'Cobertura', 'Login'];
 
 export const QuoteWizard: React.FC = () => {
   const navigate = useNavigate();
@@ -18,24 +19,23 @@ export const QuoteWizard: React.FC = () => {
   const { currentStep, country } = useQuoteStore();
 
   useEffect(() => {
-    if (!isAuthenticated) {
-      navigate('/login');
-    }
     if (!country) {
       navigate('/');
     }
-  }, [isAuthenticated, country, navigate]);
+  }, [country, navigate]);
 
   const renderStep = () => {
     switch (currentStep) {
       case 1:
         return <VehicleStep />;
       case 2:
-        return <DriverStep />;
+        return <PersonalDataStep />;
       case 3:
-        return <VehicleTechnicalStep />;
+        return <AddressStep />;
       case 4:
         return <CoverageStep />;
+      case 5:
+        return <LoginStep />;
       default:
         return <VehicleStep />;
     }

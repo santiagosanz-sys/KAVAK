@@ -27,12 +27,7 @@ export const Results: React.FC = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    if (!isAuthenticated) {
-      navigate('/login');
-      return;
-    }
-
-    if (!country || !vehicleData.year || !driverData.fullName || !vehicleTechnicalData.chassisNumber || !coverage.liability) {
+    if (!country || !vehicleData.year || !driverData.cuil || !coverage.liability) {
       navigate('/quote');
       return;
     }
@@ -46,7 +41,7 @@ export const Results: React.FC = () => {
           country: country!,
           vehicle: vehicleData as any,
           driver: driverData as any,
-          vehicleTechnical: vehicleTechnicalData as any,
+          address: addressData as any,
           coverage: coverage as any,
         });
         setQuotes(result);

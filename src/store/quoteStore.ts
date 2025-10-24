@@ -1,11 +1,12 @@
 import { create } from 'zustand';
-import type { VehicleData, DriverData, VehicleTechnicalData, Coverage, Quote, Country } from '../types';
+import type { VehicleData, DriverData, AddressData, VehicleTechnicalData, Coverage, Quote, Country } from '../types';
 
 interface QuoteState {
   currentStep: number;
   country: Country | null;
   vehicleData: Partial<VehicleData>;
   driverData: Partial<DriverData>;
+  addressData: Partial<AddressData>;
   vehicleTechnicalData: Partial<VehicleTechnicalData>;
   coverage: Partial<Coverage>;
   quotes: Quote[];
@@ -15,6 +16,7 @@ interface QuoteState {
   setCurrentStep: (step: number) => void;
   setVehicleData: (data: Partial<VehicleData>) => void;
   setDriverData: (data: Partial<DriverData>) => void;
+  setAddressData: (data: Partial<AddressData>) => void;
   setVehicleTechnicalData: (data: Partial<VehicleTechnicalData>) => void;
   setCoverage: (data: Partial<Coverage>) => void;
   setQuotes: (quotes: Quote[]) => void;
@@ -29,6 +31,7 @@ const initialState = {
   country: null,
   vehicleData: {},
   driverData: {},
+  addressData: {},
   vehicleTechnicalData: {},
   coverage: {
     liability: true, // Always required
@@ -54,6 +57,11 @@ export const useQuoteStore = create<QuoteState>((set) => ({
       driverData: { ...state.driverData, ...data } 
     })),
   
+  setAddressData: (data) => 
+    set((state) => ({ 
+      addressData: { ...state.addressData, ...data } 
+    })),
+  
   setVehicleTechnicalData: (data) => 
     set((state) => ({ 
       vehicleTechnicalData: { ...state.vehicleTechnicalData, ...data } 
@@ -70,7 +78,7 @@ export const useQuoteStore = create<QuoteState>((set) => ({
   
   nextStep: () => 
     set((state) => ({ 
-      currentStep: Math.min(state.currentStep + 1, 4) 
+      currentStep: Math.min(state.currentStep + 1, 5) 
     })),
   
   previousStep: () => 
