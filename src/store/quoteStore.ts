@@ -1,6 +1,16 @@
 import { create } from 'zustand';
 import type { VehicleData, DriverData, AddressData, VehicleTechnicalData, Coverage, Quote, Country } from '../types';
 
+interface SelectedOffer {
+  id: string;
+  name: string;
+  price: number;
+  period: string;
+  policyNumber: string;
+  features: string[];
+  description: string;
+}
+
 interface QuoteState {
   currentStep: number;
   country: Country | null;
@@ -11,6 +21,7 @@ interface QuoteState {
   coverage: Partial<Coverage>;
   quotes: Quote[];
   selectedQuote: Quote | null;
+  selectedOffer: SelectedOffer | null;
   
   setCountry: (country: Country) => void;
   setCurrentStep: (step: number) => void;
@@ -21,6 +32,7 @@ interface QuoteState {
   setCoverage: (data: Partial<Coverage>) => void;
   setQuotes: (quotes: Quote[]) => void;
   setSelectedQuote: (quote: Quote | null) => void;
+  setSelectedOffer: (offer: SelectedOffer | null) => void;
   nextStep: () => void;
   previousStep: () => void;
   reset: () => void;
@@ -38,6 +50,7 @@ const initialState = {
   },
   quotes: [],
   selectedQuote: null,
+  selectedOffer: null,
 };
 
 export const useQuoteStore = create<QuoteState>((set) => ({
@@ -76,10 +89,12 @@ export const useQuoteStore = create<QuoteState>((set) => ({
   
   setSelectedQuote: (quote) => set({ selectedQuote: quote }),
   
-  nextStep: () => 
-    set((state) => ({ 
-      currentStep: Math.min(state.currentStep + 1, 5) 
-    })),
+  setSelectedOffer: (offer) => set({ selectedOffer: offer }),
+  
+          nextStep: () => 
+            set((state) => ({ 
+              currentStep: Math.min(state.currentStep + 1, 4) 
+            })),
   
   previousStep: () => 
     set((state) => ({ 

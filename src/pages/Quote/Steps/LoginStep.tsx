@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { Input } from '../../../components/ui/Input';
 import { Button } from '../../../components/ui/Button';
 import { useAuthStore } from '../../../store/authStore';
@@ -11,6 +12,7 @@ interface LoginFormData {
 }
 
 export const LoginStep: React.FC = () => {
+  const navigate = useNavigate();
   const { login } = useAuthStore();
   const { nextStep, previousStep } = useQuoteStore();
   const { register, handleSubmit, formState: { errors } } = useForm<LoginFormData>();
@@ -30,7 +32,7 @@ export const LoginStep: React.FC = () => {
       } else {
         await login(data.email, data.password);
       }
-      nextStep();
+      navigate('/offers');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error al iniciar sesión');
     } finally {

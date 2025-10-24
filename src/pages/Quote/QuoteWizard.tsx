@@ -11,7 +11,7 @@ import { AddressStep } from './Steps/AddressStep';
 import { CoverageStep } from './Steps/CoverageStep';
 import { LoginStep } from './Steps/LoginStep';
 
-const steps = ['Vehículo', 'Datos Personales', 'Dirección', 'Cobertura', 'Login'];
+const steps = ['Vehículo', 'Datos Personales', 'Dirección', 'Login'];
 
 export const QuoteWizard: React.FC = () => {
   const navigate = useNavigate();
@@ -33,8 +33,6 @@ export const QuoteWizard: React.FC = () => {
       case 3:
         return <AddressStep />;
       case 4:
-        return <CoverageStep />;
-      case 5:
         return <LoginStep />;
       default:
         return <VehicleStep />;
