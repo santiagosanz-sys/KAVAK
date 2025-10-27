@@ -1,7 +1,5 @@
 import type { QuoteRequest, Quote, Coverage } from '../types';
 import { insurers } from '../utils/mockData';
-import { supabase } from './supabase';
-import type { User } from '../types';
 
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -127,7 +125,7 @@ const generateFeatures = (tier: string, coverages: Coverage): string[] => {
   return baseFeatures;
 };
 
-export const getQuotes = async (request: QuoteRequest, user?: User | null): Promise<Quote[]> => {
+export const getQuotes = async (request: QuoteRequest, user?: any): Promise<Quote[]> => {
   // Simulate API delay
   await delay(1500);
   
@@ -144,90 +142,14 @@ export const getQuotes = async (request: QuoteRequest, user?: User | null): Prom
   ];
   
   // Sort by price (cheapest first)
-  const sortedQuotes = quotes.sort((a, b) => a.monthlyPrice - b.monthlyPrice);
-  
-  // Save to Supabase if user is authenticated
-  if (user?.id) {
-    try {
-      const { error } = await supabase.from('quotes').insert([
-        {
-          user_id: user.id,
-          country: request.country,
-          vehicle_data: request.vehicle,
-          driver_data: request.driver,
-          address_data: request.address,
-        },
-      ]);
-      
-      if (error) {
-        console.error('Error saving quote to Supabase:', error);
-      }
-    } catch (error) {
-      console.error('Error saving quote:', error);
-    }
-  }
-  
-  return sortedQuotes;
+  return quotes.sort((a, b) => a.monthlyPrice - b.monthlyPrice);
 };
 
-export const createPolicy = async (
-  offerData: any,
-  quoteId?: string,
-  user?: User | null
-): Promise<string> => {
+export const createPolicy = async (): Promise<string> => {
   // Simulate API delay
   await delay(1000);
   
   // Generate mock policy number
-  const policyNumber = `KVK-${Date.now()}-${Math.random().toString(36).substr(2, 6).toUpperCase()}`;
-  
-  // Save to Supabase if user is authenticated
-  if (user?.id && quoteId) {
-    try {
-      const { error } = await supabase.from('selected_offers').insert([
-        {
-          quote_id: quoteId,
-          offer_data: offerData,
-          policy_number: policyNumber,
-          status: 'pending',
-        },
-      ]);
-      
-      if (error) {
-        console.error('Error saving selected offer to Supabase:', error);
-      }
-    } catch (error) {
-      console.error('Error saving selected offer:', error);
-    }
-  }
-  
-  return policyNumber;
-};
-
-export const saveVehicleTechnical = async (
-  chassisNumber: string,
-  engineNumber: string,
-  quoteId?: string,
-  user?: User | null
-): Promise<void> => {
-  if (user?.id && quoteId) {
-    try {
-      const { error } = await supabase.from('vehicle_technical').insert([
-        {
-          quote_id: quoteId,
-          chassis_number: chassisNumber,
-          engine_number: engineNumber,
-        },
-      ]);
-      
-      if (error) {
-        console.error('Error saving vehicle technical data to Supabase:', error);
-        throw error;
-      }
-    } catch (error) {
-      console.error('Error saving vehicle technical data:', error);
-      throw error;
-    }
-  }
+  return `KVK-${Date.now()}-${Math.random().toString(36).substr(2, 6).toUpperCase()}`;
 };
 
