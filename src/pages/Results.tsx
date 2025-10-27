@@ -10,11 +10,12 @@ import type { Quote } from '../types';
 
 export const Results: React.FC = () => {
   const navigate = useNavigate();
-  const { isAuthenticated } = useAuthStore();
+  const { isAuthenticated, user } = useAuthStore();
   const { 
     country, 
     vehicleData, 
-    driverData, 
+    driverData,
+    addressData,
     vehicleTechnicalData,
     coverage, 
     quotes,
@@ -37,13 +38,16 @@ export const Results: React.FC = () => {
       setError('');
       
       try {
-        const result = await getQuotes({
-          country: country!,
-          vehicle: vehicleData as any,
-          driver: driverData as any,
-          address: addressData as any,
-          coverage: coverage as any,
-        });
+        const result = await getQuotes(
+          {
+            country: country!,
+            vehicle: vehicleData as any,
+            driver: driverData as any,
+            address: addressData as any,
+            coverage: coverage as any,
+          },
+          user
+        );
         setQuotes(result);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Error al obtener cotizaciones');

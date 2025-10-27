@@ -13,7 +13,7 @@ interface LoginFormData {
 
 export const LoginStep: React.FC = () => {
   const navigate = useNavigate();
-  const { login } = useAuthStore();
+  const { login, register: registerUser } = useAuthStore();
   const { nextStep, previousStep } = useQuoteStore();
   const { register, handleSubmit, formState: { errors } } = useForm<LoginFormData>();
   
@@ -27,8 +27,9 @@ export const LoginStep: React.FC = () => {
 
     try {
       if (isRegisterMode) {
-        // Mock registration
-        await login(data.email, data.password);
+        // Register new user - we need name and country from quote store
+        const { country } = useQuoteStore.getState();
+        await registerUser('Usuario', data.email, data.password, country || 'AR');
       } else {
         await login(data.email, data.password);
       }
