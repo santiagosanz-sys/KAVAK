@@ -64,7 +64,7 @@ export const PersonalDataStep: React.FC = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Select
-          label="Género"
+          label="Género (como figura en tu DNI)"
           options={genderOptions}
           {...register('gender', { required: 'El género es requerido' })}
           error={errors.gender?.message}

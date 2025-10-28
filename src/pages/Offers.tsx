@@ -164,7 +164,7 @@ export const Offers: React.FC = () => {
           {/* Información adicional */}
           <div className="bg-white rounded-xl p-6 shadow-sm">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">
-              ¿Necesitás ayuda para decidir?
+              ¿Necesitás ayuda para decidir? Contactanos de lunes a viernes de 8 a 18
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">

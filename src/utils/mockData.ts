@@ -37,10 +37,9 @@ export const carModels: Record<string, string[]> = {
 };
 
 export const genderOptions = [
-  { value: 'male', label: 'Masculino' },
-  { value: 'female', label: 'Femenino' },
-  { value: 'other', label: 'Otro' },
-  { value: 'prefer-not-to-say', label: 'Prefiero no decir' },
+  { value: 'masculino', label: 'Masculino' },
+  { value: 'femenino', label: 'Femenino' },
+  { value: 'x', label: 'X' },
 ];
 
 export const insurers = [
