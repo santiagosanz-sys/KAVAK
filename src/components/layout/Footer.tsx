@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
           <div>
             <h3 className="text-lg font-bold mb-4">KAVAK SEGUROS</h3>
             <p className="text-gray-400 text-sm">
-              Tu broker de confianza para seguros de auto en Argentina y Chile.
+              Tu broker de confianza para seguros de auto en Argentina.
             </p>
           </div>
           
