@@ -81,13 +81,13 @@ export const Success: React.FC = () => {
                   <div>
                     <div className="text-sm text-gray-600 mb-1">Precio mensual</div>
                     <div className="font-semibold text-gray-900">
-                      {formatCurrency(selectedQuote.monthlyPrice, country!)}
+                      {formatCurrency(selectedQuote.monthlyPrice, country)}
                     </div>
                   </div>
                   <div>
                     <div className="text-sm text-gray-600 mb-1">Fecha de inicio</div>
                     <div className="font-semibold text-gray-900">
-                      {formatDate(new Date(), country!)}
+                      {formatDate(new Date(), country)}
                     </div>
                   </div>
                 </div>

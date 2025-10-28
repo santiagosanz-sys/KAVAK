@@ -40,7 +40,7 @@ export const Results: React.FC = () => {
       try {
         const result = await getQuotes(
           {
-            country: country!,
+            country: country,
             vehicle: vehicleData as any,
             driver: driverData as any,
             address: addressData as any,
@@ -130,7 +130,7 @@ export const Results: React.FC = () => {
               <InsuranceCard
                 key={quote.insurerId}
                 quote={quote}
-                country={country!}
+                country={country}
                 onSelect={() => handleSelectQuote(quote)}
               />
             ))}

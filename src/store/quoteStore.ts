@@ -13,7 +13,7 @@ interface SelectedOffer {
 
 interface QuoteState {
   currentStep: number;
-  country: Country | null;
+  country: Country; // Siempre Argentina, no nullable
   vehicleData: Partial<VehicleData>;
   driverData: Partial<DriverData>;
   addressData: Partial<AddressData>;
@@ -40,7 +40,7 @@ interface QuoteState {
 
 const initialState = {
   currentStep: 1,
-  country: null,
+  country: 'AR' as Country, // Siempre Argentina por defecto
   vehicleData: {},
   driverData: {},
   addressData: {},

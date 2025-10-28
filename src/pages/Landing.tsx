@@ -1,21 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MainLayout } from '../components/layout/MainLayout';
 import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
 import { useQuoteStore } from '../store/quoteStore';
-import type { Country } from '../types';
 
 export const Landing: React.FC = () => {
   const navigate = useNavigate();
   const { setCountry } = useQuoteStore();
-  const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
 
   const handleStartQuote = () => {
-    if (selectedCountry) {
-      setCountry(selectedCountry);
-      navigate('/quote');
-    }
+    setCountry('AR'); // Siempre Argentina
+    navigate('/quote');
   };
 
   const benefits = [
@@ -50,39 +46,9 @@ export const Landing: React.FC = () => {
                 Cotizá en segundos y encontrá la cobertura perfecta para vos.
               </p>
               
-              {/* Country Selector */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 mb-6">
-                <h3 className="text-lg font-semibold mb-4">¿Desde dónde nos contactás?</h3>
-                <div className="grid grid-cols-2 gap-4">
-                  <button
-                    onClick={() => setSelectedCountry('AR')}
-                    className={`p-4 rounded-lg border-2 transition-all duration-200 ${
-                      selectedCountry === 'AR'
-                        ? 'bg-white text-kavak-blue border-white'
-                        : 'bg-white/10 border-white/30 hover:bg-white/20'
-                    }`}
-                  >
-                    <div className="text-3xl mb-2">🇦🇷</div>
-                    <div className="font-semibold">Argentina</div>
-                  </button>
-                  <button
-                    onClick={() => setSelectedCountry('CL')}
-                    className={`p-4 rounded-lg border-2 transition-all duration-200 ${
-                      selectedCountry === 'CL'
-                        ? 'bg-white text-kavak-blue border-white'
-                        : 'bg-white/10 border-white/30 hover:bg-white/20'
-                    }`}
-                  >
-                    <div className="text-3xl mb-2">🇨🇱</div>
-                    <div className="font-semibold">Chile</div>
-                  </button>
-                </div>
-              </div>
-              
               <Button
                 variant="secondary"
                 onClick={handleStartQuote}
-                disabled={!selectedCountry}
                 className="text-lg px-8 py-4"
               >
                 Cotizar ahora
@@ -163,17 +129,10 @@ export const Landing: React.FC = () => {
           </p>
           <Button
             variant="secondary"
-            onClick={() => {
-              if (selectedCountry) {
-                setCountry(selectedCountry);
-                navigate('/quote');
-              } else {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }
-            }}
+            onClick={handleStartQuote}
             className="text-lg px-8 py-4"
           >
-            {selectedCountry ? 'Comenzar ahora' : 'Seleccioná tu país arriba'}
+            Comenzar ahora
           </Button>
         </div>
       </section>

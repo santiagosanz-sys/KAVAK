@@ -87,7 +87,7 @@ export const Checkout: React.FC = () => {
                   </div>
                   <div className="text-right">
                     <div className="text-2xl font-bold text-kavak-blue">
-                      {formatCurrency(selectedQuote.monthlyPrice, country!)}
+                      {formatCurrency(selectedQuote.monthlyPrice, country)}
                     </div>
                     <div className="text-sm text-gray-600">por mes</div>
                   </div>
@@ -182,13 +182,13 @@ export const Checkout: React.FC = () => {
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-600">Precio mensual</span>
                     <span className="font-semibold">
-                      {formatCurrency(selectedQuote.monthlyPrice, country!)}
+                      {formatCurrency(selectedQuote.monthlyPrice, country)}
                     </span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-600">Precio anual</span>
                     <span className="font-semibold">
-                      {formatCurrency(selectedQuote.annualPrice, country!)}
+                      {formatCurrency(selectedQuote.annualPrice, country)}
                     </span>
                   </div>
                   <div className="flex justify-between text-xs text-kavak-teal">
@@ -196,7 +196,7 @@ export const Checkout: React.FC = () => {
                     <span>
                       {formatCurrency(
                         selectedQuote.monthlyPrice * 12 - selectedQuote.annualPrice,
-                        country!
+                        country
                       )}
                     </span>
                   </div>
@@ -205,7 +205,7 @@ export const Checkout: React.FC = () => {
                 <div className="flex justify-between text-lg font-bold mb-6">
                   <span>Total primer mes</span>
                   <span className="text-kavak-blue">
-                    {formatCurrency(selectedQuote.monthlyPrice, country!)}
+                    {formatCurrency(selectedQuote.monthlyPrice, country)}
                   </span>
                 </div>
 

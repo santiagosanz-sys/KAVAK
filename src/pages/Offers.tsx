@@ -74,7 +74,7 @@ export const Offers: React.FC = () => {
       features: offer.features,
       description: offer.description
     });
-    navigate('/vehicle-technical');
+    navigate('/checkout');
   };
 
   const getColorClasses = (color: string) => {

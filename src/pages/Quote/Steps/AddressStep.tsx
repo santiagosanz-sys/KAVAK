@@ -50,12 +50,6 @@ export const AddressStep: React.FC = () => {
         />
       </div>
 
-      <div className="bg-kavak-blue/5 border border-kavak-blue/20 rounded-lg p-4">
-        <p className="text-sm text-gray-700">
-          📍 <strong>Importante:</strong> Esta información se utiliza para calcular el riesgo según tu zona geográfica.
-        </p>
-      </div>
-
       <div className="flex justify-between">
         <Button type="button" variant="outline" onClick={previousStep}>
           Anterior

@@ -3,8 +3,8 @@ import { Landing } from './pages/Landing';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { QuoteWizard } from './pages/Quote/QuoteWizard';
+import { Summary } from './pages/Summary';
 import { Offers } from './pages/Offers';
-import { VehicleTechnical } from './pages/VehicleTechnical';
 import { Results } from './pages/Results';
 import { Checkout } from './pages/Checkout';
 import { Success } from './pages/Success';
@@ -19,18 +19,18 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/quote" element={<QuoteWizard />} />
         <Route
-          path="/offers"
+          path="/summary"
           element={
             <ProtectedRoute>
-              <Offers />
+              <Summary />
             </ProtectedRoute>
           }
         />
         <Route
-          path="/vehicle-technical"
+          path="/offers"
           element={
             <ProtectedRoute>
-              <VehicleTechnical />
+              <Offers />
             </ProtectedRoute>
           }
         />

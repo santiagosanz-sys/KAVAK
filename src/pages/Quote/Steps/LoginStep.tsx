@@ -33,7 +33,7 @@ export const LoginStep: React.FC = () => {
       } else {
         await login(data.email, data.password);
       }
-      navigate('/offers');
+      navigate('/summary');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error al iniciar sesión');
     } finally {
