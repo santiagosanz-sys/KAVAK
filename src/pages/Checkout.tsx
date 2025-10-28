@@ -8,7 +8,6 @@ import { useQuoteStore } from '../store/quoteStore';
 import { useAuthStore } from '../store/authStore';
 import { formatCurrency } from '../utils/formatters';
 import { createPolicy } from '../services/mockApi';
-import { sendQuoteEmail } from '../services/emailService';
 
 export const Checkout: React.FC = () => {
   const navigate = useNavigate();
@@ -40,26 +39,6 @@ export const Checkout: React.FC = () => {
     
     try {
       const policyNumber = await createPolicy();
-      
-      // Send email with quote
-      if (user?.email && selectedQuote) {
-        try {
-          await sendQuoteEmail({
-            to: user.email,
-            userName: user.name,
-            offerName: selectedQuote.insurerName,
-            price: selectedQuote.monthlyPrice,
-            period: 'mensual',
-            policyNumber: policyNumber,
-            features: selectedQuote.features,
-            vehicleData: vehicleData,
-            addressData: addressData,
-          });
-        } catch (emailError) {
-          console.error('Error sending email:', emailError);
-          // Don't block the flow if email fails
-        }
-      }
       
       navigate('/success', { state: { policyNumber } });
     } catch (error) {
