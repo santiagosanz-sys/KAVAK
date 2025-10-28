@@ -43,7 +43,7 @@ export const Landing: React.FC = () => {
                 Protegé tu auto con los mejores seguros del mercado
               </h1>
               <p className="text-xl mb-8 text-white/90">
-                Cotizá en segundos y encontrá la cobertura perfecta para vos.
+                Cotizá en segundos, compará entre distintos seguros y encontrá la cobertura perfecta para vos con precios preferenciales.
               </p>
               
               <Button
@@ -66,9 +66,9 @@ export const Landing: React.FC = () => {
                   {/* Contenido */}
                   <div className="relative z-10">
                     <div className="text-6xl mb-4">🚗</div>
-                    <h3 className="text-2xl font-bold mb-2 text-white">Tu auto merece el mejor seguro</h3>
+                    <h3 className="text-2xl font-bold mb-2 text-white">Te mereces el mejor seguro</h3>
                     <p className="text-white/90">
-                      Más de 10,000 clientes confían en nosotros para proteger su inversión.
+                      Más de 10,000 clientes confían en nosotros para proteger su vehículo.
                     </p>
                   </div>
                   
