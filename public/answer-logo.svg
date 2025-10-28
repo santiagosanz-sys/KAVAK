@@ -1,0 +1,11 @@
+<svg width="120" height="60" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Blue square icon -->
+  <rect x="0" y="10" width="20" height="20" fill="#0066CC"/>
+  <rect x="2" y="12" width="8" height="8" fill="#E6F3FF"/>
+  
+  <!-- answer text -->
+  <text x="25" y="25" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#0066CC">answer</text>
+  
+  <!-- Galicia Seguros text -->
+  <text x="25" y="40" font-family="Arial, sans-serif" font-size="10" fill="#FF6600">Galicia Seguros</text>
+</svg>
