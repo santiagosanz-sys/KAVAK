@@ -29,7 +29,7 @@ export const Checkout: React.FC = () => {
     }
 
     if (!selectedQuote || !country) {
-      navigate('/results');
+      navigate('/offers');
       return;
     }
   }, [isAuthenticated, selectedQuote, country, navigate]);

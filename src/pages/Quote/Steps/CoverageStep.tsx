@@ -59,7 +59,7 @@ export const CoverageStep: React.FC = () => {
 
   const onSubmit = (data: Coverage) => {
     setCoverage(data);
-    navigate('/results');
+    navigate('/offers');
   };
 
   return (

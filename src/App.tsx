@@ -5,7 +5,6 @@ import { Register } from './pages/Register';
 import { QuoteWizard } from './pages/Quote/QuoteWizard';
 import { Summary } from './pages/Summary';
 import { Offers } from './pages/Offers';
-import { Results } from './pages/Results';
 import { Checkout } from './pages/Checkout';
 import { Success } from './pages/Success';
 import { ProtectedRoute } from './components/ProtectedRoute';
@@ -31,14 +30,6 @@ function App() {
           element={
             <ProtectedRoute>
               <Offers />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/results"
-          element={
-            <ProtectedRoute>
-              <Results />
             </ProtectedRoute>
           }
         />
